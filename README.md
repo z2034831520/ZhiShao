@@ -9,14 +9,22 @@
 ```text
 _import_rdk/ZhiShao_V2/              RDK X5 主程序导入区
 _import_windows/vlm_service_cascade.py  Windows VLM 服务导入文件
+rdk_app/                             RDK 主程序开发区
+windows_brain/                       Windows VLM 服务开发区
 ```
 
 ### RDK 主程序
 
-位置：
+原始导入位置：
 
 ```text
 _import_rdk/ZhiShao_V2
+```
+
+开发位置：
+
+```text
+rdk_app/
 ```
 
 作用：
@@ -27,10 +35,16 @@ _import_rdk/ZhiShao_V2
 
 ### Windows VLM 服务
 
-位置：
+原始导入位置：
 
 ```text
 _import_windows/vlm_service_cascade.py
+```
+
+开发位置：
+
+```text
+windows_brain/vlm_service_cascade.py
 ```
 
 来源：
@@ -50,6 +64,8 @@ F:\codex_project\ZhiShao\vlm_service_cascade.py
 ```text
 _import_windows/  Windows 侧已有文件导入区，保留原始导入文件
 _import_rdk/      RDK X5 项目导入区，保留从开发板拉取的项目基线
+rdk_app/          RDK 主程序开发区，后续功能修改优先在这里完成
+windows_brain/    Windows VLM 服务开发区，后续脑服务修改优先在这里完成
 docs/             项目说明、架构记录、接口契约、同步流程
 scripts/          后续放同步、部署、验证脚本
 templates/        可复用模板
@@ -85,10 +101,16 @@ docs/API_CONTRACT.md
 
 1. 在当前 Codex 工作区完成分析、文档整理和低风险优化。
 2. 不移动、不覆盖 `_import_rdk/` 和 `_import_windows/` 导入目录。
-3. 后续如需整理正式代码结构，建议另建工作目录，例如 `rdk_app/` 与 `windows_brain/`。
+3. 功能开发优先修改 `rdk_app/` 与 `windows_brain/`。
 4. 修改完成后先查看 Git diff。
 5. 同步到 RDK 测试目录 `/home/sunrise/ZhiShao_V2_codex_test`。
 6. 在 RDK 测试目录验证通过后，再决定是否替换正式目录 `/home/sunrise/ZhiShao_V2`。
+
+开发区说明见：
+
+```text
+docs/DEVELOPMENT_SETUP.md
+```
 
 ## 注意事项
 

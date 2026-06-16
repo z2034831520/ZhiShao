@@ -1,0 +1,11 @@
+# RDK application Python dependencies.
+# RDK-specific runtime packages such as hobot_dnn are provided by the RDK X5 environment.
+flask
+imageio
+lark-oapi
+matplotlib
+numpy
+opencv-python
+pillow
+pyserial
+requests
