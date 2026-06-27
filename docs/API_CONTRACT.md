@@ -1,6 +1,6 @@
 # Windows VLM 服务接口契约
 
-本文记录 `_import_windows/vlm_service_cascade.py` 当前提供给 RDK 主程序调用的 HTTP 接口。该服务默认运行在 Windows PC 的 `0.0.0.0:9000`，RDK 通过 `brain/brain_client.py` 调用。
+本文记录 `windows_brain/vlm_service_cascade.py` 当前提供给 RDK 主程序调用的 HTTP 接口。该服务默认运行在 Windows PC 的 `0.0.0.0:9000`，RDK 通过 `brain/brain_client.py` 调用。
 
 ## 通用约定
 

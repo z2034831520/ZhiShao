@@ -5,7 +5,7 @@
 ```text
 RDK 正式目录：/home/sunrise/ZhiShao_V2
 RDK 测试目录：/home/sunrise/ZhiShao_V2_codex_test
-Windows 工作区：F:\CodexWorkspace\Project_01_ZhiShao_RDK_X5
+当前 Windows 工作区：E:\GitHub\ZhiShao
 ```
 
 ## 基本原则
@@ -34,14 +34,14 @@ ssh sunrise@<RDK_IP>
 推荐拉取到 `_import_rdk/ZhiShao_V2` 之外的新临时目录做对比，确认后再合并：
 
 ```powershell
-scp -r sunrise@<RDK_IP>:/home/sunrise/ZhiShao_V2 "F:\CodexWorkspace\Project_01_ZhiShao_RDK_X5\work\ZhiShao_V2_from_rdk"
+scp -r sunrise@<RDK_IP>:/home/sunrise/ZhiShao_V2 "E:\GitHub\ZhiShao\work\ZhiShao_V2_from_rdk"
 ```
 
 4. 在 Codex 工作区完成修改后，先查看 Git diff：
 
 ```powershell
 git status --short
-git diff -- README.md docs
+git diff -- README.md AGENTS.md docs
 ```
 
 5. 在 RDK 上创建测试目录：
@@ -52,16 +52,16 @@ mkdir -p /home/sunrise/ZhiShao_V2_codex_test
 
 6. 从 Windows 同步到 RDK 测试目录。
 
-如果后续整理出正式工作目录，例如 `rdk_app/`，优先同步该目录内容；在当前导入基线阶段，可按确认后的范围同步 `_import_rdk/ZhiShao_V2/`：
+当前已经有正式开发目录 `rdk_app/`，优先同步该目录内容；`_import_rdk/ZhiShao_V2/` 仅作为导入基线保留：
 
 ```powershell
-scp -r "F:\CodexWorkspace\Project_01_ZhiShao_RDK_X5\_import_rdk\ZhiShao_V2\*" sunrise@<RDK_IP>:/home/sunrise/ZhiShao_V2_codex_test/
+scp -r "E:\GitHub\ZhiShao\rdk_app\*" sunrise@<RDK_IP>:/home/sunrise/ZhiShao_V2_codex_test/
 ```
 
 7. 如需同步 Windows VLM 服务文件到 Windows 运行目录，先在 Windows 本机另行备份，再复制：
 
 ```powershell
-Copy-Item -LiteralPath "F:\CodexWorkspace\Project_01_ZhiShao_RDK_X5\_import_windows\vlm_service_cascade.py" -Destination "<Windows_VLM_运行目录>\vlm_service_cascade.py" -Force
+Copy-Item -LiteralPath "E:\GitHub\ZhiShao\windows_brain\vlm_service_cascade.py" -Destination "<Windows_VLM_运行目录>\vlm_service_cascade.py" -Force
 ```
 
 ## RDK 测试目录验证建议

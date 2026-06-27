@@ -61,17 +61,19 @@ F:\codex_project\ZhiShao\vlm_service_cascade.py
 
 ## 目录说明
 
+当前已存在目录：
+
 ```text
 _import_windows/  Windows 侧已有文件导入区，保留原始导入文件
 _import_rdk/      RDK X5 项目导入区，保留从开发板拉取的项目基线
 rdk_app/          RDK 主程序开发区，后续功能修改优先在这里完成
 windows_brain/    Windows VLM 服务开发区，后续脑服务修改优先在这里完成
 docs/             项目说明、架构记录、接口契约、同步流程
-scripts/          后续放同步、部署、验证脚本
-templates/        可复用模板
 work/             临时分析和草稿
 outputs/          用户交付物
 ```
+
+后续如果需要同步、部署、验证脚本或可复用模板，再按需新增 `scripts/`、`templates/` 等目录。
 
 ## 两端关系
 
@@ -79,7 +81,7 @@ RDK 主程序不是 Windows VLM 服务的替代版本。两者是协作关系：
 
 ```text
 RDK 摄像头/姿态检测/飞书/Web 看护页
-  -> _import_rdk/ZhiShao_V2/brain/brain_client.py
+  -> rdk_app/brain/brain_client.py
   -> Windows PC 9000 端口 VLM 服务
   -> DashScope / Qwen-VL
   -> 分析结果返回 RDK

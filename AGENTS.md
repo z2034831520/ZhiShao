@@ -4,13 +4,15 @@
 - Windows PC 是 Codex 主开发环境。
 - RDK X5 是 Linux 运行、部署和硬件验证环境。
 - RDK 正式项目路径：`/home/sunrise/ZhiShao_V2`
-- Windows Codex 工作区：`F:\CodexWorkspace\Project_01_ZhiShao_RDK_X5`
+- 当前 Windows Codex 工作区：`E:\GitHub\ZhiShao`
 - Windows 原始文件来源：`F:\codex_project\ZhiShao\vlm_service_cascade.py`
 
 ## 当前状态
 - Windows 侧文件已导入 `_import_windows/`。
-- RDK X5 当前不在身边，RDK 侧项目文件暂未导入。
-- `_import_rdk/` 用于后续从 RDK 拉取 `/home/sunrise/ZhiShao_V2` 的完整文件。
+- RDK 侧项目文件已导入 `_import_rdk/ZhiShao_V2/`。
+- `rdk_app/` 是 RDK 主程序开发区，来自 `_import_rdk/ZhiShao_V2/`。
+- `windows_brain/` 是 Windows VLM 服务开发区，来自 `_import_windows/vlm_service_cascade.py`。
+- 如需后续重新从 RDK 拉取 `/home/sunrise/ZhiShao_V2`，应先拉到 `work/` 下的新临时目录对比，不直接覆盖 `_import_rdk/` 或开发区。
 
 ## 工作规则
 - 修改前必须先阅读 README、目录结构、关键 Python 文件、启动脚本和配置文件。
