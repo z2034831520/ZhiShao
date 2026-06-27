@@ -2,9 +2,9 @@
 from pathlib import Path
 
 # =========================================================================
-# 鏅哄摠 ZhiShao V3 鍩虹閰嶇疆
+# 智哨 ZhiShao V3 基础配置
 # =========================================================================
-PRODUCT_NAME = "鏅哄摠 ZhiShao 鏅鸿兘浜戝彴鐪嬫姢绯荤粺"
+PRODUCT_NAME = "智哨 ZhiShao 智能云台看护系统"
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
@@ -51,7 +51,7 @@ def _env_bool(name, default=False):
 
 
 # =========================================================================
-# 鎽勫儚澶翠笌浜戝彴
+# 摄像头与云台
 # =========================================================================
 CAMERA_INDEX = _env_int("ZHISHAO_CAMERA_INDEX", 0)
 CAMERA_WIDTH = _env_int("ZHISHAO_CAMERA_WIDTH", 640)
@@ -67,7 +67,7 @@ PTZ_KP_Y = _env_float("ZHISHAO_PTZ_KP_Y", 0.15)
 
 
 # =========================================================================
-# 浜戠澶ц剳鏈嶅姟
+# 云端大脑服务
 # =========================================================================
 VLM_SERVER_IP = _env("ZHISHAO_VLM_SERVER_IP", "192.168.43.100")
 VLM_SERVER_PORT = _env_int("ZHISHAO_VLM_SERVER_PORT", 9000)
@@ -76,6 +76,7 @@ VLM_BASE_URL = _env("ZHISHAO_VLM_BASE_URL", f"http://{VLM_SERVER_IP}:{VLM_SERVER
 BRAIN_URL_ANALYZE = _env("ZHISHAO_BRAIN_URL_ANALYZE", f"{VLM_BASE_URL}/analyze")
 BRAIN_URL_ASK = _env("ZHISHAO_BRAIN_URL_ASK", f"{VLM_BASE_URL}/ask")
 BRAIN_URL_SUMMARIZE = _env("ZHISHAO_BRAIN_URL_SUMMARIZE", f"{VLM_BASE_URL}/summarize")
+BRAIN_URL_PRIVACY_CHECK = _env("ZHISHAO_BRAIN_URL_PRIVACY_CHECK", f"{VLM_BASE_URL}/privacy_check")
 
 
 
@@ -89,15 +90,17 @@ USE_IP_GEOLOCATION = _env_bool("ZHISHAO_USE_IP_GEOLOCATION", False)
 
 
 # =========================================================================
-# 椋炰功閫氫俊閰嶇疆
-# 鐪熷疄鍊艰鍐欏叆鏈洰褰?.env 鎴栫郴缁熺幆澧冨彉閲忥紝涓嶈鍐欒繘婧愮爜銆?# =========================================================================
+# 飞书通信配置
+# 真实值请写入本目录 .env 或系统环境变量，不要写进源码。
+# =========================================================================
 FEISHU_WEBHOOK = _env("FEISHU_WEBHOOK")
 FEISHU_APP_ID = _env("FEISHU_APP_ID")
 FEISHU_APP_SECRET = _env("FEISHU_APP_SECRET")
 
 
 # =========================================================================
-# 绠楁硶闃堝€间笌鑷姩鍖栭厤缃?# =========================================================================
+# 算法阈值与自动化配置
+# =========================================================================
 FPS_BUFFER_SIZE = _env_int("ZHISHAO_FPS_BUFFER_SIZE", 30)
 ALERT_COOLDOWN = _env_int("ZHISHAO_ALERT_COOLDOWN", 15)
 STATIONARY_TIME_LIMIT = _env_int("ZHISHAO_STATIONARY_TIME_LIMIT", 30)
@@ -119,7 +122,8 @@ CAMERA_REOPEN_SECONDS = _env_float("ZHISHAO_CAMERA_REOPEN_SECONDS", 2.0)
 
 
 # =========================================================================
-# 鍘嗗彶鍏煎閰嶇疆锛氬綋鍓嶄汉鐗╅攣瀹氶粯璁や笉鍐嶄娇鐢ㄤ汉鑴歌瘑鍒?# =========================================================================
+# 历史兼容配置：当前人物锁定默认不再使用人脸识别
+# =========================================================================
 FACE_MODEL_DIR = os.path.join(BASE_DIR, "models")
 FACE_DETECT_MODEL = os.path.join(FACE_MODEL_DIR, "face_detection_yunet_2023mar.onnx")
 FACE_RECOGNIZE_MODEL = os.path.join(FACE_MODEL_DIR, "face_recognition_sface_2021dec.onnx")

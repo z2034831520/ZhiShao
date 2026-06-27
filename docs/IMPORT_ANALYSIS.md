@@ -117,11 +117,8 @@ logs/
 
 ## 目前发现的注意点
 
-1. `settings.py` 的部分中文注释存在编码异常，`main.py` 和 `brain_client.py` UTF-8 读取正常。后续整理时需要确认是否只影响注释，避免误改运行逻辑。
-2. RDK `.env.example` 中写的是 Windows 服务使用本地 Ollama/Qwen2.5-VL，但当前 Windows 导入文件实际调用 DashScope/Qwen-VL。这是一个设计差异，需要后续确认：
-   - 保留 DashScope 云端方案；或
-   - 改成 Ollama 本地模型方案；或
-   - 做成可配置后端。
+1. `rdk_app/settings.py` 的已确认乱码文本已修复；`_import_rdk/ZhiShao_V2/settings.py` 继续作为原始导入基线保留，不直接覆盖。
+2. RDK `.env.example` 已按当前实现统一为 Windows `windows_brain/vlm_service_cascade.py` 调用 DashScope/Qwen-VL；如果后续要支持本地 Ollama，需要再做成可配置后端。
 3. RDK 主程序依赖 Linux/RDK 环境、摄像头、串口云台和 OpenCV，Windows 侧不适合完整运行主程序，只适合做静态检查和 Windows 脑服务开发。
 4. 当前 Git 工作区只保留 `.env.example`，没有提交 `.env`、模型文件、日志或图片等运行产物。
 

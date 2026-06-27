@@ -6,6 +6,7 @@ import base64
 from settings import (
     BRAIN_URL_ASK,
     BRAIN_URL_ANALYZE,
+    BRAIN_URL_PRIVACY_CHECK,
     BRAIN_URL_SUMMARIZE,
     CARE_CITY,
     CARE_LOCATION,
@@ -17,7 +18,7 @@ class BrainClient:
         self.ask_url = BRAIN_URL_ASK
         self.analyze_url = BRAIN_URL_ANALYZE
         self.summarize_url = BRAIN_URL_SUMMARIZE
-        self.privacy_url = self.analyze_url.replace("/analyze", "/privacy_check")
+        self.privacy_url = BRAIN_URL_PRIVACY_CHECK
         
         # 默认使用固定看护地点，避免手机热点/运营商出口导致城市漂移。
         self.local_city, self.local_geo_location = self._load_care_location()
@@ -257,7 +258,7 @@ class BrainClient:
                 "risk_level": "unknown",
                 "reason": f"隐私复核服务不可用：{e}。已按保护策略拒绝开启真实画面。",
                 "confidence": 0.0,
-                "evidence": ["RDK 无法连接 Windows 9000 隐私复核服务"],
+                "evidence": [f"RDK 无法连接隐私复核服务：{self.privacy_url}"],
                 "block_type": "service_unavailable",
             }
         except Exception as e:
