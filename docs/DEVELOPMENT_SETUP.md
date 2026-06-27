@@ -32,6 +32,15 @@ __pycache__/
 - RDK 专用运行库，例如 `hobot_dnn`。
 - 摄像头、串口云台和飞书配置。
 
+补齐后可先运行部署前自检：
+
+```bash
+cd /home/sunrise/ZhiShao_V2_codex_test
+python3 preflight_check.py
+```
+
+该脚本会检查 `.env`、BPU 模型文件、Python 依赖、摄像头、云台串口、Windows VLM `/health` 和飞书配置。
+
 ## Windows VLM 服务开发区
 
 `windows_brain/` 来自 `_import_windows/vlm_service_cascade.py`，用于开发和验证 Windows 侧 Flask VLM 服务。

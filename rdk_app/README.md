@@ -44,6 +44,13 @@ yolov8n-pose.bin
 Windows Codex 工作区只适合做静态检查和非硬件单测。摄像头、串口云台、BPU 模型和飞书长连接需要在 RDK X5 上验证。
 
 ```bash
+python3 preflight_check.py
 python3 -m py_compile main.py settings.py brain/brain_client.py
 python3 -m unittest discover -s tests
+```
+
+如果只想在 Windows 或无硬件环境下检查脚本本身，可跳过硬件和网络项：
+
+```bash
+python3 preflight_check.py --skip-camera --skip-ptz --skip-network --no-exit-code
 ```
